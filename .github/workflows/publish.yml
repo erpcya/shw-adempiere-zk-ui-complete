@@ -30,7 +30,7 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          gradle-version: 8.0.1
+          gradle-version: 8.0.2
           arguments: createRelease
         env:
           GITHUB_DEPLOY_USER: ${{ github.actor }}
@@ -39,26 +39,26 @@ jobs:
       - name: Upload dist app zip artifact
         uses: actions/upload-artifact@v3
         with:
-          name: adempiere-zk-ui-complete.zip
-          path: build/release/adempiere-zk-ui-complete.zip
+          name: shw-adempiere-zk-ui-complete.zip
+          path: build/release/shw-adempiere-zk-ui-complete.zip
 
       - name: Upload dist app zip.MD5 artifact
         uses: actions/upload-artifact@v3
         with:
-          name: adempiere-zk-ui-complete.zip.MD5
-          path: build/release/adempiere-zk-ui-complete.zip.MD5
+          name: shw-adempiere-zk-ui-complete.zip.MD5
+          path: build/release/shw-adempiere-zk-ui-complete.zip.MD5
 
       - name: Upload dist app tar artifact
         uses: actions/upload-artifact@v3
         with:
-          name: adempiere-zk-ui-complete.tar
-          path: build/release/adempiere-zk-ui-complete.tar
+          name: shw-adempiere-zk-ui-complete.tar
+          path: build/release/shw-adempiere-zk-ui-complete.tar
 
       - name: Upload dist app tar.MD5 artifact
         uses: actions/upload-artifact@v3
         with:
-          name: adempiere-zk-ui-complete.tar.MD5
-          path: build/release/adempiere-zk-ui-complete.tar.MD5
+          name: shw-adempiere-zk-ui-complete.tar.MD5
+          path: build/release/shw-adempiere-zk-ui-complete.tar.MD5
 
 
   publish-binaries:
@@ -77,28 +77,28 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: adempiere-zk-ui-complete.zip/adempiere-zk-ui-complete.zip
+          args: shw-adempiere-zk-ui-complete.zip/shw-adempiere-zk-ui-complete.zip
 
       - name: Upload zip.MD5
         uses: skx/github-action-publish-binaries@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: adempiere-zk-ui-complete.zip.MD5/adempiere-zk-ui-complete.zip.MD5
+          args: shw-adempiere-zk-ui-complete.zip.MD5/shw-adempiere-zk-ui-complete.zip.MD5
 
       - name: Upload tar
         uses: skx/github-action-publish-binaries@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: adempiere-zk-ui-complete.tar/adempiere-zk-ui-complete.tar
+          args: shw-adempiere-zk-ui-complete.tar/shw-adempiere-zk-ui-complete.tar
 
       - name: Upload tar.MD5
         uses: skx/github-action-publish-binaries@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: adempiere-zk-ui-complete.tar.MD5/adempiere-zk-ui-complete.tar.MD5
+          args: shw-adempiere-zk-ui-complete.tar.MD5/shw-adempiere-zk-ui-complete.tar.MD5
 
 
   # Check secrets to push image in docker hub registry
@@ -140,13 +140,13 @@ jobs:
       - name: Download build dist app
         uses: actions/download-artifact@v3
         with:
-          name: adempiere-zk-ui-complete.zip
+          name: shw-adempiere-zk-ui-complete.zip
           path: dist
 
       - name: Unzip dist file
         run: |
           cd dist
-          unzip -o adempiere-zk-ui-complete.zip
+          unzip -o shw-adempiere-zk-ui-complete.zip
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
@@ -184,13 +184,13 @@ jobs:
       - name: Download build dist app
         uses: actions/download-artifact@v3
         with:
-          name: adempiere-zk-ui-complete.zip
+          name: shw-adempiere-zk-ui-complete.zip
           path: dist
 
       - name: Unzip dist file
         run: |
           cd dist
-          unzip -o adempiere-zk-ui-complete.zip
+          unzip -o shw-adempiere-zk-ui-complete.zip
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
