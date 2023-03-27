@@ -30,7 +30,7 @@ repositories {
 		}
 	}
 }
-def baseVersion = 'shw-aereo-1.0.1'
+def baseVersion = 'shw-aereo-1.0.3'
 def baseGroupId = 'com.erpya'
 sourceCompatibility = 1.11
 def privateDependencyBaseVersion = "adempiere-3.9.4"
