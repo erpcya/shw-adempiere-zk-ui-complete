@@ -159,17 +159,17 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
-      - name: Push image in Docker Hub
-        uses: docker/build-push-action@v3
+      - name: Push alpine image in Docker Hub
+        uses: docker/build-push-action@v2
         with:
           context: .
-          file: docker/jetty/Dockerfile .
+          file: docker/jetty/Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKER_REPO_ADEMPIERE_ZK }}:latest
-            ${{ secrets.DOCKER_REPO_ADEMPIERE_ZK }}:${{ github.event.release.tag_name }}
+            ${{ secrets.DOCKER_REPO_ADEMPIERE_ZK }}:jetty-alpine-${{ github.event.release.tag_name }}
+            ${{ secrets.DOCKER_REPO_ADEMPIERE_ZK }}:jetty-alpine
           build-args: |
-            JDK_RELEASE=11-jdk
+            JDK_RELEASE=11-jdk-alpine
 
   # Check secrets to push image in docker hub registry
   check-digital-ocean-secrets:
